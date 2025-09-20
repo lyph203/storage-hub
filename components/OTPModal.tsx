@@ -103,7 +103,7 @@ const OTPModal = ({
             </AlertDialogAction>
 
             <div className="subtitle-2 mt-2 text-center text-light-100">
-              Did'nt get a code?
+              Didn&apost get a code?
               <Button
                 type="button"
                 variant="link"
