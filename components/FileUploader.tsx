@@ -21,7 +21,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
   const path = usePathname();
   //const { toast } = useToast();
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
 
     const uploadPromises = acceptedFiles.map(
@@ -45,11 +45,12 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
             }
           }
         );
-        await Promise.all(uploadPromises);
-      },
-      [ownerId, accountId, path]
-    );
-  }, []);
+      });
+
+      await Promise.all(uploadPromises);
+    },
+    [ownerId, accountId, path]);
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const handleRemoveFile = (
